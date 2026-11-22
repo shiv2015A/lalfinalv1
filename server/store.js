@@ -1,4 +1,4 @@
-// server/store.js - Unified Storage (Firestore with Local Persistent Cache)
+// server/store.js - Unified Storage (Firestore with Local Persistent Cache & Serverless Resilience)
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -21,6 +21,7 @@ const CONFIG_FILE = path.join(__dirname, '..', 'data', 'firebase-config.json');
 
 let firestoreDb = null;
 let firebaseApp = null;
+let memoryProducts = [...initialProducts];
 let firestoreStatus = {
   connected: false,
   usingFallback: true,
@@ -29,16 +30,34 @@ let firestoreStatus = {
   collectionName: 'products'
 };
 
-// Initialize local data file if not present
+// Initialize local data file if not present (safe for read-only serverless filesystems)
 export function initStore() {
-  const dir = path.dirname(DATA_FILE);
-  if (!fs.existsSync(dir)) {
-    fs.mkdirSync(dir, { recursive: true });
+  try {
+    const dir = path.dirname(DATA_FILE);
+    if (!fs.existsSync(dir)) {
+      try {
+        fs.mkdirSync(dir, { recursive: true });
+      } catch (_) {}
+    }
+
+    if (!fs.existsSync(DATA_FILE)) {
+      try {
+        fs.writeFileSync(DATA_FILE, JSON.stringify(initialProducts, null, 2), 'utf-8');
+      } catch (_) {}
+    }
+  } catch (err) {
+    console.warn('Local file store notice:', err.message);
   }
 
-  if (!fs.existsSync(DATA_FILE)) {
-    fs.writeFileSync(DATA_FILE, JSON.stringify(initialProducts, null, 2), 'utf-8');
-  }
+  // Load existing products if available
+  try {
+    if (fs.existsSync(DATA_FILE)) {
+      const data = JSON.parse(fs.readFileSync(DATA_FILE, 'utf-8'));
+      if (Array.isArray(data) && data.length > 0) {
+        memoryProducts = data;
+      }
+    }
+  } catch (_) {}
 
   // Check if firebase config exists
   if (fs.existsSync(CONFIG_FILE)) {
@@ -69,7 +88,9 @@ export async function initFirestore(config) {
     const existing = getApps();
     if (existing.length > 0) {
       for (const app of existing) {
-        await deleteApp(app);
+        try {
+          await deleteApp(app);
+        } catch (_) {}
       }
     }
 
@@ -84,8 +105,11 @@ export async function initFirestore(config) {
       collectionName: 'products'
     };
 
-    // Save config for persistence
-    fs.writeFileSync(CONFIG_FILE, JSON.stringify(config, null, 2), 'utf-8');
+    // Save config for persistence (ignore if read-only)
+    try {
+      fs.writeFileSync(CONFIG_FILE, JSON.stringify(config, null, 2), 'utf-8');
+    } catch (_) {}
+
     console.log(`[Firestore] Connected successfully to project: ${config.projectId}`);
 
     // Sync seed data to Firestore if collection is empty
@@ -121,26 +145,29 @@ export function getFirestoreStatus() {
   return firestoreStatus;
 }
 
-// Local File Read / Write helpers
+// Local File Read / Write helpers with memory caching
 function getLocalProducts() {
   try {
-    if (!fs.existsSync(DATA_FILE)) {
-      fs.writeFileSync(DATA_FILE, JSON.stringify(initialProducts, null, 2), 'utf-8');
-      return initialProducts;
+    if (fs.existsSync(DATA_FILE)) {
+      const data = fs.readFileSync(DATA_FILE, 'utf-8');
+      const parsed = JSON.parse(data);
+      if (Array.isArray(parsed) && parsed.length > 0) {
+        memoryProducts = parsed;
+        return parsed;
+      }
     }
-    const data = fs.readFileSync(DATA_FILE, 'utf-8');
-    return JSON.parse(data);
   } catch (err) {
-    console.error('Error reading local products:', err.message);
-    return initialProducts;
+    // Read error fallback
   }
+  return memoryProducts && memoryProducts.length > 0 ? memoryProducts : initialProducts;
 }
 
 function saveLocalProducts(products) {
+  memoryProducts = products;
   try {
     fs.writeFileSync(DATA_FILE, JSON.stringify(products, null, 2), 'utf-8');
   } catch (err) {
-    console.error('Error saving local products:', err.message);
+    // Read-only filesystem warning handled gracefully
   }
 }
 
@@ -155,11 +182,11 @@ export async function getAllProducts() {
         items.push({ id: docSnap.id, ...docSnap.data() });
       });
       if (items.length > 0) {
-        saveLocalProducts(items); // mirror to local cache
+        saveLocalProducts(items); // mirror to memory & local cache
         return items;
       }
     } catch (err) {
-      console.warn('[Firestore] Query failed, falling back to local cache:', err.message);
+      console.warn('[Firestore] Query notice, serving local memory store:', err.message);
     }
   }
   return getLocalProducts();
@@ -172,7 +199,7 @@ export async function addProduct(product) {
     createdAt: product.createdAt || new Date().toISOString()
   };
 
-  // Local write
+  // Memory & Local write
   const products = getLocalProducts();
   products.unshift(newProduct);
   saveLocalProducts(products);
@@ -245,4 +272,3 @@ export async function resetStore() {
   }
   return initialProducts;
 }
-

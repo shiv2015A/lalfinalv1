@@ -1,20 +1,9 @@
 [
   {
     "id": "prod-1",
-    "subtitle": "Regal Berry Red 3-Piece Silk Festive Ensemble",
-    "isFeatured": true,
-    "description": "Step into royal elegance with our festive Chinon Bustier & Palazzo Set. Featuring heavy handcrafted real mirror work along the neckline and sleeves, paired with flowing art silk palazzo pants and a sheer coordinating dupatta. Tailored for wedding celebrations, cocktail nights, and sangeet glamour.",
     "title": "Chinon Bustier Plazo Set with Real Mirror & Lace Work",
-    "specScreenshots": [
-      "/uploads/product-1-spec1.jpg",
-      "/uploads/product-1-spec2.jpg"
-    ],
-    "discount": 50,
-    "inWeddingSection": true,
-    "price": 2499,
-    "rentDurationDays": 3,
-    "category": "wedding",
-    "rentAvailable": true,
+    "description": "Step into royal elegance with our festive Chinon Bustier & Palazzo Set. Featuring heavy handcrafted real mirror work along the neckline and sleeves, paired with flowing art silk palazzo pants and a sheer coordinating dupatta. Tailored for wedding celebrations, cocktail nights, and sangeet glamour.",
+    "categoryName": "Wedding & Festive Collection",
     "sizes": [
       "S",
       "M",
@@ -22,30 +11,36 @@
       "XL",
       "XXL"
     ],
-    "images": [
-      "/uploads/product-1-main.jpg",
-      "/uploads/product-1-closeup.jpg",
-      "/uploads/product-1-full.jpg"
+    "inStock": true,
+    "rentDurationDays": 3,
+    "rentSecurityDeposit": 999,
+    "specScreenshots": [
+      "/uploads/product-1-spec1.jpg",
+      "/uploads/product-1-spec2.jpg"
     ],
-    "rentPrice": 699,
-    "createdAt": "2026-11-22T15:26:31.524Z",
-    "categoryName": "Wedding & Festive Collection",
     "specs": {
-      "bottomFabric": "Silk",
-      "washCare": "Hand Wash Only / Dry Clean Recommended",
-      "sleeve": "Full Sleeve with Border Work",
-      "neck": "U - Neck with Mirror Collar",
-      "dupattaFabric": "Art Silk",
       "brandColor": "Berry Red",
-      "bottomType": "Palazzo",
-      "occasion": "Wedding, Festive & Sangeet Soirees",
       "kurtaType": "Straight Bustier Cut",
-      "ornamentation": "Real Mirror Work & Applique",
+      "dupattaFabric": "Art Silk",
+      "pattern": "Embellished",
+      "sleeve": "Full Sleeve with Border Work",
+      "bottomType": "Palazzo",
       "color": "Berry Maroon / Crimson Red",
       "kurtaFabric": "Art Silk / Chinon",
-      "pattern": "Embellished"
+      "washCare": "Hand Wash Only / Dry Clean Recommended",
+      "bottomFabric": "Silk",
+      "occasion": "Wedding, Festive & Sangeet Soirees",
+      "ornamentation": "Real Mirror Work & Applique",
+      "neck": "U - Neck with Mirror Collar"
     },
+    "price": 2499,
+    "rentAvailable": true,
+    "isFeatured": true,
+    "rentPrice": 699,
+    "category": "wedding",
+    "discount": 50,
     "isViral": true,
+    "originalPrice": 4999,
     "tags": [
       "wedding",
       "viral",
@@ -55,52 +50,51 @@
       "chinon",
       "palazzo set"
     ],
-    "originalPrice": 4999,
-    "rentSecurityDeposit": 999,
-    "inStock": true
+    "createdAt": "2026-11-22T15:26:31.524Z",
+    "inWeddingSection": true,
+    "subtitle": "Regal Berry Red 3-Piece Silk Festive Ensemble",
+    "images": [
+      "/uploads/product-1-main.jpg",
+      "/uploads/product-1-closeup.jpg",
+      "/uploads/product-1-full.jpg"
+    ]
   },
   {
     "id": "prod-2",
-    "rentAvailable": true,
-    "rentSecurityDeposit": 799,
-    "specScreenshots": [
-      "/uploads/product-2-spec1.jpg",
-      "/uploads/product-2-spec2.jpg"
-    ],
+    "categoryName": "Viral & Trendy Kurtis",
     "sizes": [
       "S",
       "M",
       "L",
       "XL"
     ],
-    "rentDurationDays": 3,
-    "categoryName": "Viral & Trendy Kurtis",
-    "images": [
-      "/uploads/product-2-main.jpg",
-      "/uploads/product-2-closeup.jpg"
-    ],
+    "rentAvailable": true,
+    "title": "Gulnaar Wine Georgette A-Line Kurta & Flared Palazzo Set",
     "createdAt": "2026-11-22T15:26:31.524Z",
+    "isViral": true,
+    "rentDurationDays": 3,
+    "specScreenshots": [
+      "/uploads/product-2-spec1.jpg",
+      "/uploads/product-2-spec2.jpg"
+    ],
+    "price": 1899,
     "rentPrice": 499,
-    "inWeddingSection": false,
     "specs": {
-      "occasion": "Cocktail Dinners, Festive Chic & Celebrations",
-      "color": "Deep Wine Maroon",
-      "sleeve": "Full Sleeve with Gathered Cuff",
-      "kurtaType": "A-Line Flare",
-      "ornamentation": "Fine Lace Trim",
-      "pattern": "Solid Elegant Drape",
-      "kurtaFabric": "Pure Flowy Georgette",
+      "bottomType": "Wide Palazzo",
       "neck": "V Neck with Golden Lace Trim",
-      "bottomFabric": "Georgette",
-      "washCare": "Dry Clean or Gentle Machine Wash",
+      "color": "Deep Wine Maroon",
       "dupattaFabric": "Georgette",
+      "occasion": "Cocktail Dinners, Festive Chic & Celebrations",
+      "sleeve": "Full Sleeve with Gathered Cuff",
+      "pattern": "Solid Elegant Drape",
       "brandColor": "MAROON",
-      "bottomType": "Wide Palazzo"
+      "kurtaFabric": "Pure Flowy Georgette",
+      "kurtaType": "A-Line Flare",
+      "washCare": "Dry Clean or Gentle Machine Wash",
+      "ornamentation": "Fine Lace Trim",
+      "bottomFabric": "Georgette"
     },
-    "category": "viral-kurtis",
-    "isFeatured": true,
     "originalPrice": 3799,
-    "inStock": true,
     "tags": [
       "viral",
       "wine",
@@ -110,21 +104,21 @@
       "trendy",
       "flared"
     ],
-    "isViral": true,
-    "discount": 50,
-    "price": 1899,
-    "title": "Gulnaar Wine Georgette A-Line Kurta & Flared Palazzo Set",
     "description": "The minimalist luxury look taking social media by storm. Crafted in featherlight flowy georgette in an intoxicating deep wine shade, this A-line kurti set features a sculpted V-neck with gold-thread border lace, airy bell sleeves, and statement wide-leg palazzos with matching dupatta.",
-    "subtitle": "Fluid V-Neck Georgette Silhouette with Delicate Lace Accents"
+    "discount": 50,
+    "category": "viral-kurtis",
+    "inStock": true,
+    "isFeatured": true,
+    "inWeddingSection": false,
+    "images": [
+      "/uploads/product-2-main.jpg",
+      "/uploads/product-2-closeup.jpg"
+    ],
+    "subtitle": "Fluid V-Neck Georgette Silhouette with Delicate Lace Accents",
+    "rentSecurityDeposit": 799
   },
   {
     "id": "prod-3",
-    "rentAvailable": true,
-    "specScreenshots": [
-      "/uploads/product-3-spec1.jpg",
-      "/uploads/product-3-spec2.jpg"
-    ],
-    "rentSecurityDeposit": 699,
     "sizes": [
       "S",
       "M",
@@ -132,35 +126,34 @@
       "XL",
       "XXL"
     ],
-    "rentDurationDays": 3,
     "categoryName": "Viral & Trendy Kurtis",
-    "images": [
-      "/uploads/product-3-main.jpg",
-      "/uploads/product-3-side.jpg",
-      "/uploads/product-3-back.jpg"
-    ],
+    "rentAvailable": true,
+    "title": "Floral Grace Khadi Kurta & Patiala Set with Hot Pink Dupatta",
     "createdAt": "2026-11-22T15:26:31.525Z",
+    "rentDurationDays": 3,
+    "isViral": true,
+    "specScreenshots": [
+      "/uploads/product-3-spec1.jpg",
+      "/uploads/product-3-spec2.jpg"
+    ],
+    "price": 1699,
     "rentPrice": 399,
-    "inWeddingSection": false,
     "specs": {
-      "pattern": "Floral Stem Print",
+      "kurtaFabric": "Organic Khadi",
+      "bottomType": "Patiala Salwar",
       "kurtaType": "Straight Fit",
-      "dupattaFabric": "Cotton Silk Blend with Tassels",
+      "neck": "Round Neck with Dainty Trim",
+      "ornamentation": "Clean Botanical Motif",
+      "washCare": "Gentle Hand Wash with Mild Detergent",
       "bottomFabric": "Khadi",
       "color": "Pearl Off-White & Rani Pink",
+      "dupattaFabric": "Cotton Silk Blend with Tassels",
+      "pattern": "Floral Stem Print",
       "occasion": "Day Festive, Haldi, Mehendi & Casual Luxury",
-      "neck": "Round Neck with Dainty Trim",
-      "washCare": "Gentle Hand Wash with Mild Detergent",
-      "bottomType": "Patiala Salwar",
-      "kurtaFabric": "Organic Khadi",
-      "ornamentation": "Clean Botanical Motif",
-      "sleeve": "Full Sleeve with Tie Accents",
-      "brandColor": "Off White"
+      "brandColor": "Off White",
+      "sleeve": "Full Sleeve with Tie Accents"
     },
-    "category": "viral-kurtis",
     "originalPrice": 3399,
-    "isFeatured": true,
-    "inStock": true,
     "tags": [
       "khadi",
       "cotton silk",
@@ -170,11 +163,18 @@
       "day wear",
       "white"
     ],
-    "isViral": true,
-    "discount": 50,
-    "price": 1699,
-    "title": "Floral Grace Khadi Kurta & Patiala Set with Hot Pink Dupatta",
     "description": "Effortless daytime elegance. Handwoven from breathable organic Khadi, adorned with delicate blush floral botanical motifs, paired with authentic pleated Patiala salwar and an energetic hot pink cotton-silk dupatta with tassel finishes.",
-    "subtitle": "Pure Handcrafted Khadi with Soft Rose Motifs & Vibrant Contrast Drape"
+    "category": "viral-kurtis",
+    "discount": 50,
+    "inStock": true,
+    "isFeatured": true,
+    "inWeddingSection": false,
+    "images": [
+      "/uploads/product-3-main.jpg",
+      "/uploads/product-3-side.jpg",
+      "/uploads/product-3-back.jpg"
+    ],
+    "subtitle": "Pure Handcrafted Khadi with Soft Rose Motifs & Vibrant Contrast Drape",
+    "rentSecurityDeposit": 699
   }
 ]
