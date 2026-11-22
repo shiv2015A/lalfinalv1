@@ -346,7 +346,7 @@ Hi Label & Loom team! I would like to book this piece. Please confirm availabili
       showToast('Welcome back, Admin! 👑');
       return { success: true };
     } else {
-      showToast('Invalid admin credentials. Please use admin and admin123.', 'error');
+      showToast('Invalid username or password.', 'error');
       return { success: false, error: 'Invalid credentials' };
     }
   };

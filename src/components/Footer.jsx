@@ -1,19 +1,21 @@
 // src/components/Footer.jsx
 import React, { useState } from 'react';
 import { useStore } from '../context/StoreContext';
-import { Sparkles, Shield, Heart, ArrowRight, Instagram, Facebook, Phone, Mail, MapPin } from 'lucide-react';
+import { Sparkles, Heart, ArrowRight, Instagram, Phone, Mail, MapPin, RefreshCw, ShieldCheck } from 'lucide-react';
 
 export default function Footer() {
-  const { setIsAdminOpen, setActiveCategory, showToast, instagramHandle } = useStore();
+  const { setActiveCategory, showToast, instagramHandle } = useStore();
   const [email, setEmail] = useState('');
 
   const handleSubscribe = (e) => {
     e.preventDefault();
     if (email) {
-      showToast('Welcome to the Label & Loom Atelier VIP Circle! 💌 Check your inbox for 15% OFF.');
+      showToast('Welcome to the Label & Loom VIP Circle! 💌 Check your inbox for 15% OFF.');
       setEmail('');
     }
   };
+
+  const cleanHandle = (instagramHandle || 'labelandloom.in').replace(/^@/, '');
 
   return (
     <footer className="bg-charcoal text-white pt-10 sm:pt-14 pb-24 sm:pb-8 border-t border-gold-500/20">
@@ -35,7 +37,7 @@ export default function Footer() {
 
           <div className="lg:col-span-6 space-y-3">
             <h4 className="font-serif text-base font-bold text-gold-300">
-              Join the VIP Atelier Circle
+              Join the VIP Circle
             </h4>
             <p className="text-xs text-white/60">
               Receive exclusive early access to festive drop releases, bridal edits, and 15% off your first order.
@@ -64,6 +66,7 @@ export default function Footer() {
         {/* Links Grid */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-xs text-white/70">
           
+          {/* Col 1: Collections */}
           <div className="space-y-3">
             <h5 className="font-bold text-sm text-white uppercase tracking-wider">Collections</h5>
             <ul className="space-y-2">
@@ -90,72 +93,74 @@ export default function Footer() {
             </ul>
           </div>
 
+          {/* Col 2: Customer Care */}
           <div className="space-y-3">
             <h5 className="font-bold text-sm text-white uppercase tracking-wider">Customer Care</h5>
             <ul className="space-y-2">
               <li><a href="#story-section" className="hover:text-gold-400 transition">Size Guide Chart</a></li>
-              <li><a href="#story-section" className="hover:text-gold-400 transition">Express Delivery &amp; Tracking</a></li>
+              <li><a href="#story-section" className="hover:text-gold-400 transition">Express Shipping Policy</a></li>
               <li><a href="#story-section" className="hover:text-gold-400 transition">7-Day Size Exchange</a></li>
               <li><a href="#story-section" className="hover:text-gold-400 transition">Wash &amp; Fabric Care</a></li>
             </ul>
           </div>
 
+          {/* Col 3: Rental & Quality */}
           <div className="space-y-3">
-            <h5 className="font-bold text-sm text-white uppercase tracking-wider">Direct Concierge</h5>
+            <h5 className="font-bold text-sm text-white uppercase tracking-wider">Rent &amp; Save</h5>
             <ul className="space-y-2">
-              <li className="flex items-center gap-2">
-                <Instagram className="w-3.5 h-3.5 text-gold-400" />
-                <a
-                  href={`https://www.instagram.com/${(instagramHandle || 'labelandloom.in').replace(/^@/, '')}/`}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="hover:text-gold-400 transition"
-                >
-                  @{instagramHandle || 'labelandloom.in'}
-                </a>
+              <li className="flex items-center gap-1.5">
+                <RefreshCw className="w-3.5 h-3.5 text-gold-400 flex-shrink-0" />
+                <span>3-Day &amp; 7-Day Rentals</span>
               </li>
-              <li className="flex items-center gap-2">
-                <Phone className="w-3.5 h-3.5 text-gold-400" />
-                <span>+91 98765 43210</span>
+              <li className="flex items-center gap-1.5">
+                <ShieldCheck className="w-3.5 h-3.5 text-gold-400 flex-shrink-0" />
+                <span>100% Sanitized &amp; Dry-Cleaned</span>
               </li>
-              <li className="flex items-center gap-2">
-                <Mail className="w-3.5 h-3.5 text-gold-400" />
-                <span>concierge@labelandloom.com</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <MapPin className="w-3.5 h-3.5 text-gold-400" />
-                <span>Atelier Studio, New Delhi &amp; Jaipur</span>
+              <li>
+                <span className="text-white/50">Refundable security deposit returned within 24 hours of return delivery.</span>
               </li>
             </ul>
           </div>
 
+          {/* Col 4: Contact & Concierge */}
           <div className="space-y-3">
-            <h5 className="font-bold text-sm text-white uppercase tracking-wider">Atelier Portal</h5>
-            <p className="text-[11px] text-white/50 leading-relaxed">
-              Store administrators can manage stock, upload dresses, and run the Smart Screenshot Vision system.
-            </p>
-            <button
-              onClick={() => setIsAdminOpen(true)}
-              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-white/10 hover:bg-gold-500 hover:text-charcoal text-white font-bold text-xs transition border border-white/20 shadow-xs"
-            >
-              <Shield className="w-3.5 h-3.5" />
-              <span>Admin Login (admin / admin123)</span>
-            </button>
+            <h5 className="font-bold text-sm text-white uppercase tracking-wider">Concierge</h5>
+            <ul className="space-y-2">
+              <li className="flex items-center gap-2">
+                <Instagram className="w-3.5 h-3.5 text-gold-400 flex-shrink-0" />
+                <a
+                  href={`https://www.instagram.com/${cleanHandle}/`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="hover:text-gold-400 transition font-medium"
+                >
+                  @{cleanHandle}
+                </a>
+              </li>
+              <li className="flex items-center gap-2">
+                <Phone className="w-3.5 h-3.5 text-gold-400 flex-shrink-0" />
+                <span>+91 98765 43210</span>
+              </li>
+              <li className="flex items-center gap-2">
+                <Mail className="w-3.5 h-3.5 text-gold-400 flex-shrink-0" />
+                <span>orders@{cleanHandle}</span>
+              </li>
+              <li className="flex items-center gap-2">
+                <MapPin className="w-3.5 h-3.5 text-gold-400 flex-shrink-0" />
+                <span>Atelier Studio, New Delhi &amp; Jaipur</span>
+              </li>
+            </ul>
           </div>
 
         </div>
 
         {/* Bottom Credits */}
         <div className="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between text-xs text-white/50 gap-4">
-          <p>© 2026 Label &amp; Loom Atelier. All Rights Reserved. Indian Ethnic Couture.</p>
-          <div className="flex items-center gap-4">
+          <p>© 2026 Label &amp; Loom. All Rights Reserved. Indian Ethnic Couture.</p>
+          <div className="flex items-center gap-2">
             <span className="flex items-center gap-1">
-              Crafted with <Heart className="w-3 h-3 text-rose-500 fill-current" /> for Indian Handlooms
+              Crafted with <Heart className="w-3 h-3 text-rose-500 fill-current" /> for Authentic Indian Handlooms
             </span>
-            <span>•</span>
-            <button onClick={() => setIsAdminOpen(true)} className="hover:text-gold-400 underline">
-              Admin Access
-            </button>
           </div>
         </div>
 
@@ -163,4 +168,3 @@ export default function Footer() {
     </footer>
   );
 }
-

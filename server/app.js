@@ -111,7 +111,7 @@ router.post('/auth/login', (req, res) => {
 
   return res.status(401).json({
     success: false,
-    message: 'Invalid admin credentials. Please use admin and admin123.'
+    message: 'Invalid credentials.'
   });
 });
 
@@ -495,3 +495,4 @@ app.use('/api', router);
 app.use('/', router);
 
 export default app;
+

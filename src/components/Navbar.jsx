@@ -1,7 +1,7 @@
 // src/components/Navbar.jsx - Meesho / Flipkart / Amazon Style App Header
 import React, { useState } from 'react';
 import { useStore } from '../context/StoreContext';
-import { Search, ShoppingBag, Heart, Shield, Sparkles, X, Menu, Phone, Instagram } from 'lucide-react';
+import { Search, ShoppingBag, Heart, User, Sparkles, X, Menu, Phone, Instagram } from 'lucide-react';
 
 export default function Navbar() {
   const {
@@ -138,18 +138,15 @@ export default function Navbar() {
             )}
           </button>
 
-          {/* Admin Access Button */}
+          {/* Account Button */}
           <button
             onClick={() => setIsAdminOpen(true)}
-            className={`px-2 py-1 rounded-md text-[11px] font-semibold flex items-center gap-1 transition border ${
-              adminToken
-                ? 'bg-brand-700 text-white border-brand-800'
-                : 'bg-gray-100 text-gray-700 hover:bg-gray-200 border-gray-300'
-            }`}
-            title="Admin Portal"
+            className="p-1 sm:px-2.5 sm:py-1 rounded-md text-xs font-semibold flex items-center gap-1.5 transition text-gray-700 hover:text-brand-700 hover:bg-gray-100"
+            title={adminToken ? "Studio" : "Sign In"}
+            aria-label="Account"
           >
-            <Shield className="w-3.5 h-3.5" />
-            <span className="hidden md:inline">{adminToken ? 'Admin' : 'Login'}</span>
+            <User className="w-4 h-4" />
+            <span className="hidden md:inline">{adminToken ? 'Studio' : 'Sign In'}</span>
           </button>
         </div>
 
@@ -213,7 +210,7 @@ export default function Navbar() {
               }}
               className="text-gray-500 hover:text-gray-800 font-semibold"
             >
-              Admin Studio
+              {adminToken ? 'Studio' : 'Sign In'}
             </button>
           </div>
         </div>
